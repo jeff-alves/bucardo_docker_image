@@ -14,7 +14,7 @@ COPY etc/bucardorc /etc/bucardorc
 COPY lib/entrypoint.sh /entrypoint.sh
 
 RUN { \
-    chmod +x /entrypoint.sh \
+    chmod +x /entrypoint.sh; \
     chown postgres /etc/postgresql/9.5/main/pg_hba.conf; \
     chown postgres /etc/bucardorc; \
     chown postgres /var/log/bucardo; \
@@ -22,11 +22,10 @@ RUN { \
     chown postgres /var/run/bucardo; \
     usermod -aG bucardo postgres; \
     service postgresql start; \
-    su - postgres; \
-    psql -c "CREATE USER bucardo SUPERUSER PASSWORD 'bucardo';" \
-    psql -c "CREATE DATABASE bucardo;" \
-    psql -c "GRANT ALL ON DATABASE bucardo TO bucardo;" \
-    bucardo install --batch \
+    psql -U postgres -c "CREATE USER bucardo SUPERUSER PASSWORD 'bucardo';"; \
+    psql -U postgres -c "CREATE DATABASE bucardo;"; \
+    psql -U postgres -c "GRANT ALL ON DATABASE bucardo TO bucardo;"; \
+    bucardo install --batch; \
     }
 
 VOLUME "/media/bucardo"

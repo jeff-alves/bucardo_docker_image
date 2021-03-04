@@ -78,9 +78,10 @@ Ubuntu-based Bucardo image for Docker Containers.
 4. Start the container:
 
   ```bash
+  docker build -t jeff/bucardo .
   docker run --name my_own_bucardo_container \
     -v <bucardo.json dir>:/media/bucardo \
-    -d plgr/bucardo
+    -d jeff/bucardo
   ```
 
 5. Check bucardo's status:
