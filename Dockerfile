@@ -5,8 +5,8 @@ LABEL version="1.0"
 
 
 RUN { \
-    apt -y update; \
-    apt -y install bucardo jq libdbix-safe-perl; \
+    apt-get -y update; \
+    apt-get -y install bucardo jq libdbix-safe-perl; \
     }
 
 COPY files/pg_hba.conf /etc/postgresql/9.5/main/
