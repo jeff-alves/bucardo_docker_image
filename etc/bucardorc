@@ -1,3 +1,5 @@
 dbport = 5432
-dbuser = bucardo
+dbhost = localhost
 dbname = bucardo
+dbuser = bucardo
+dbpass = bucardo
