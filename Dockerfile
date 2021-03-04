@@ -9,9 +9,9 @@ RUN { \
     apt -y install bucardo jq libdbix-safe-perl; \
     }
 
-COPY etc/pg_hba.conf /etc/postgresql/9.5/main/
-COPY etc/bucardorc /etc/bucardorc
-COPY lib/entrypoint.sh /entrypoint.sh
+COPY files/pg_hba.conf /etc/postgresql/9.5/main/
+COPY files/bucardorc /etc/bucardorc
+COPY files/entrypoint.sh /entrypoint.sh
 
 RUN { \
     chmod +x /entrypoint.sh; \
